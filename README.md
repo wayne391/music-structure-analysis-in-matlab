@@ -26,7 +26,7 @@ root/
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- estimation/ : results of the program  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- feature/ : generated features  
   
-In the root, there are three programs. Following the procedures, you can experiments on a dataset.  
+In the root folder (workspace here), there are three programs. Following the procedures, you can experiments on a dataset.  
   
 1. run "feature_saving.m" and generated features  will be placed at the feature folder  
 2. run "run_all.m" and the results of prediction will be palced at estimation folder  
@@ -42,9 +42,9 @@ Generally, it's recommended to use the first one - "Structure Feature". It's sti
 ### Features
 From Chroma Toolbox: CLP, CENS, CRP
 
-To see the influence on performance of chroma feature, please refer to [2]() 
+To see the influence on performance of chroma feature, please refer to [2] 
 Note that there are no MFCC feature, but my function accept customized feature  as input.
-I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab eand ssentia  is so hard to build. Maybe I'll add this one day.
+I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essentia  is so hard to build. Maybe I'll add this one day.
 ### Performance
 I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.
 dataset: Beatles (174 songs)
