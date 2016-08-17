@@ -25,7 +25,7 @@ visualize_results(audio_filename, result);
 see demo.m for further using
   
 ### workspace/  
-If you want to use this template, please follows the structure of folers.  
+If you want to use this template, please follows the structure of folders.  
   
 root/    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- annotation/ : groundtruth or anntations files  
