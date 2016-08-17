@@ -76,7 +76,7 @@ I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.
 |               | CLP           | 0.722    |
 |               | CRP           | 0.700    |
 | Foote         | CENS          |          |
-|               | CLP           |          |
+|               | CLP           | 0.440    |
 |               | CRP           | 0.423    |
 
 ## References
