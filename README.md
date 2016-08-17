@@ -30,7 +30,7 @@ If you want to use this template, please follows the structure of folders.
 root/    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- annotation/ : groundtruth or anntations files  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- audio/ : audio files  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- estimation/ : results of the program  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- estimation/ : results of the program 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- feature/ : generated features  
   
 In the root folder (workspace here), there are three programs. Following the procedures, you can experiments on a dataset.  
@@ -40,23 +40,17 @@ In the root folder (workspace here), there are three programs. Following the pro
 3. run "eval.py" to see the performance. (Optional)
 
 Note that the amount of annotation files will dominate the amount of evaluation. To see details in "run_all.m" and "eval.py".
-Note that for the reason of copyright, I won't put audio files here.
+Note that there are existing results in estimation folder, the parameter is default (see below).   
+Note that for the reason of copyright, I won't put any audio files here.
+
 ## Algorithms, Features & Performance
 ### Algorithms
 1. Structure Feature (2012) [1]:    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feature & Pre-processing  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recurrence Plot    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Structure Feature  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Novelty Curve & Peak Selection    
 2. Checkboard Kernel (2000) [2]:  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feature & Pre-processing  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Self Similarity Matrix    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gaussian Checkborad  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Novelty Curve & Peak Selection
 
 Generally, it's recommended to use the first one - "Structure Feature". It's still one of most effective segmentation algorithms. However, Checkboard Kernel is simple to implement :).  
 ### Features
-From Chroma Toolbox: CLP, CENS, CRP
+From Chroma Toolbox: CLP (default), CENS, CRP
 
 To see the influence on performance of chroma feature, please refer to [3] 
 Note that there are no MFCC feature, but my function accept customized feature  as input.
@@ -65,7 +59,7 @@ I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essen
 I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.  
 * dataset:   
 &nbsp;&nbsp;&nbsp;&nbsp;Beatles (174 songs)  
-* parameters:  
+* parameters (default):  
 &nbsp;&nbsp;&nbsp;&nbsp;Chroma Feature: winLenSTMSP = 4410  
 &nbsp;&nbsp;&nbsp;&nbsp;Structure Feature (SF): (m, k, st) = (2.5, 0.04, 30)  
 &nbsp;&nbsp;&nbsp;&nbsp;Checkboard Kernel (foote): winLen = 64  
@@ -75,9 +69,11 @@ I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.
 | SF            | CENS          | 0.706    |
 |               | CLP           | 0.722    |
 |               | CRP           | 0.700    |
-| Foote         | CENS          |          |
+| Foote         | CENS          | 0.448    |
 |               | CLP           | 0.440    |
 |               | CRP           | 0.423    |
+
+I think the performance of foote is not good enough. Maybe somewhere is wrong.
 
 ## References
 1. Serrà, J., Müller, M., Grosche, P., & Arcos, J. L. (2012). Unsupervised Detection of Music Boundaries by Time Series Structure Features. In Proc. of the 26th AAAI Conference on Artificial Intelligence (pp. 1613–1619).Toronto, Canada.  
