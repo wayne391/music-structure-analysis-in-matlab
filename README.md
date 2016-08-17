@@ -2,7 +2,7 @@
 Implememtation on two non-NN segmentation algorithms in matlab. Additionally, it contains a toolbox and a workspace for facilitating coding.  
 兩種不同音樂分段演算法的實作
 
-Related Topics: Structure Analysis, Recurrence Plot, Similarity Matrix 
+Related Topics: Structure Analysis, Recurrence Plot (RP), Self-Similarity Matrix(SSM) 
 
   
 ## Dependencies
@@ -43,8 +43,16 @@ Note that the amount of annotation files will dominate the amount of evaluation.
 Note that for the reason of copyright, I won't put audio files here.
 ## Algorithms, Features & Performance
 ### Algorithms
-1. Structure Feature (2012) [1]: Recurrence Plot (RP), ... etc
-2. Checkboard Kernel (2000) [2]: Self-Similarity Matrix (SSM), ...etc
+1. Structure Feature (2012) [1]:    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feature & Pre-processing  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recurrence Plot    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Structure Feature  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Novelty Curve & Peak Selection    
+2. Checkboard Kernel (2000) [2]:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Feature & Pre-processing  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Self Similarity Matrix    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gaussian Checkborad  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Novelty Curve & Peak Selection
 
 Generally, it's recommended to use the first one - "Structure Feature". It's still one of most effective segmentation algorithms. However, Checkboard Kernel is simple to implement :).  
 ### Features
@@ -55,7 +63,12 @@ Note that there are no MFCC feature, but my function accept customized feature  
 I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essentia  is so hard to build. Maybe I'll add this one day.
 ### Performance
 I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.  
-dataset: Beatles (174 songs)
+* dataset:   
+&nbsp;&nbsp;&nbsp;&nbsp;Beatles (174 songs)  
+* parameters:  
+&nbsp;&nbsp;&nbsp;&nbsp;Chroma Feature: winLenSTMSP = 4410  
+&nbsp;&nbsp;&nbsp;&nbsp;Structure Feature (SF): (m, k, st) = (2.5, 0.04, 30)  
+&nbsp;&nbsp;&nbsp;&nbsp;Checkboard Kernel (foote): winLen = 64  
   
 | Algo          | Feature       | Score    |
 | ------------- |:-------------:| --------:|
