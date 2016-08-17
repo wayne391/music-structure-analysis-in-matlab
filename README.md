@@ -33,7 +33,7 @@ In the root folder (workspace here), there are three programs. Following the pro
 3. run "eval.py" to see the performance. (Optional)
 
 Note that the amount of annotation files will dominate the amount of evaluation. To see details in "eval.py".
-## Algorithms & Performance
+## Algorithms, Features & Performance
 ### Algorithms
 1. Structure Feature (2012) [1]: Recurrence Plot (RP), ... etc
 2. Checkboard Kernel (2000) [2]: Self-Similarity Matrix (SSM), ...etc
