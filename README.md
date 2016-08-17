@@ -6,8 +6,8 @@ Fields: Structure Analysis, Recurrence Plot, Similarity Matrix
 
   
 ## Dependencies
-* Chroma Toolbox[4] (matlab toolbox): [http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/](http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/)
-* mir_eval [5]: For evaluation (Optional)
+* Chroma Toolbox [4] (matlab toolbox): [http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/](http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/)
+* mir_eval [5] (python package): For evaluation (Optional)
 
 ## Tutorial
 There are two folders<br>
