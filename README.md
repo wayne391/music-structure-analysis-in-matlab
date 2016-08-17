@@ -15,6 +15,11 @@ There are two folders<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- workspace/ : a template for testing and evaluating a dataset 
 
 ### segmentaion toolbox/
+Adding this folder to toolbox or addpath, and it's easy to use.
+```matlab
+result = audio_segmenter_sf(audio_filename);
+visualize_results(audio_filename, result, annotation_filename);
+```
 see demo.m for further using
   
 ### workspace/  
