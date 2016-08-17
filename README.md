@@ -46,7 +46,8 @@ To see the influence on performance of chroma feature, please refer to [2]()
 Note that there are no MFCC feature, but my function accept customized feature  as input.
 I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab eand ssentia  is so hard to build. Maybe I'll add this one day.
 ### Performance
-I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.  
+I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.
+dataset: Beatles (174 songs)
   
 | Algo          | Feature       | Score   |
 | ------------- |:-------------:| -------:|
