@@ -45,7 +45,7 @@ Note that for the reason of copyright, I won't put any audio files here.
 
 ## Algorithms, Features & Performance
 ### Algorithms
-1. Structure Feature (2012) [1] (default)      
+1. Structure Feature (2012) (default) [1]        
 2. Checkboard Kernel (2000) [2]    
 
 Generally, it's recommended to use the first one - "Structure Feature". It's still one of most effective segmentation algorithms. However, Checkboard Kernel is simple to implement :).  
