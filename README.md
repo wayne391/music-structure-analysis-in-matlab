@@ -2,7 +2,7 @@
 Implememtation on two non-NN segmentation algorithms in matlab. Additionally, it contains a toolbox and a workspace for facilitating coding.  
 兩種不同音樂分段演算法的實作
 
-Fields: Structure Analysis, Recurrence Plot, Similarity Matrix 
+Related Topics: Structure Analysis, Recurrence Plot, Similarity Matrix 
 
   
 ## Dependencies
