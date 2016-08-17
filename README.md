@@ -9,6 +9,7 @@ Related Topics: Structure Analysis, Recurrence Plot, Similarity Matrix
 * Chroma Toolbox (matlab toolbox) [4] : [http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/](http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/)
 * mir_eval (python package) [5] : For evaluation (Optional)
 
+Note that there are a warning in origirnal Chroma Toolbox and a bug that can't read .mp3, and I fix it. 
 ## Tutorial
 There are two folders<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- segmentaion toolbox/ : set path and it can be used directly.  
@@ -17,8 +18,9 @@ There are two folders<br>
 ### segmentaion toolbox/
 Adding this folder to toolbox or addpath, and it's easy to use.
 ```matlab
+audio_filename = 'test.wav';
 result = audio_segmenter_sf(audio_filename);
-visualize_results(audio_filename, result, annotation_filename);
+visualize_results(audio_filename, result);
 ```
 see demo.m for further using
   
