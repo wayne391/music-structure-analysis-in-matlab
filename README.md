@@ -60,7 +60,7 @@ dataset: Beatles (174 songs)
 | Algo          | Feature       | Score    |
 | ------------- |:-------------:| --------:|
 | SF            | CENS          | 0.706    |
-|               | CLP           |          |
+|               | CLP           | 0.722    |
 |               | CRP           |          |
 | Foote         | CENS          |          |
 |               | CLP           |          |
