@@ -15,7 +15,7 @@ There are two folders<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- segmentaion toolbox/ : set path and it can be used directly   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- workspace/ : a template for testing and evaluating a dataset
 
-### segmentaion toolbox/
+### segmentaion_toolbox/
 Adding this folder to toolbox or addpath, and it's easy to use.
 ```matlab
 audio_filename = 'test.wav';
