@@ -9,7 +9,7 @@ Related Topics: Structure Analysis, Recurrence Plot, Similarity Matrix
 * Chroma Toolbox (matlab toolbox) [4] : [http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/](http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/)
 * mir_eval (python package) [5] : For evaluation (Optional)
 
-Note that there are a warning in origirnal Chroma Toolbox and a bug that can't read .mp3, and I fix it. 
+Note that there are a warning in origirnal Chroma Toolbox and a little bug that can't read .mp3. I fix it!
 ## Tutorial
 There are two folders<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- segmentaion toolbox/ : set path and it can be used directly.  
@@ -39,7 +39,8 @@ In the root folder (workspace here), there are three programs. Following the pro
 2. run "run_all.m" and the results of prediction will be palced at estimation folder  
 3. run "eval.py" to see the performance. (Optional)
 
-Note that the amount of annotation files will dominate the amount of evaluation. To see details in "eval.py".
+Note that the amount of annotation files will dominate the amount of evaluation. To see details in "run_all.m" and "eval.py".
+Note that for the reason of copyright, I won't put audio files here.
 ## Algorithms, Features & Performance
 ### Algorithms
 1. Structure Feature (2012) [1]: Recurrence Plot (RP), ... etc
