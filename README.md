@@ -42,7 +42,7 @@ Generally, it's recommended to use the first one - "Structure Feature". It's sti
 ### Features
 From Chroma Toolbox: CLP, CENS, CRP
 
-To see the influence on performance of chroma feature, please refer to [2] 
+To see the influence on performance of chroma feature, please refer to [3] 
 Note that there are no MFCC feature, but my function accept customized feature  as input.
 I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essentia  is so hard to build. Maybe I'll add this one day.
 ### Performance
