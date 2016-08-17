@@ -53,17 +53,17 @@ To see the influence on performance of chroma feature, please refer to [3]
 Note that there are no MFCC feature, but my function accept customized feature  as input.
 I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essentia  is so hard to build. Maybe I'll add this one day.
 ### Performance
-I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.
+I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.  
 dataset: Beatles (174 songs)
   
-| Algo          | Feature       | Score   |
-| ------------- |:-------------:| -------:|
-| SF            | CENS          |         |
-|               | CLP           |         |
-|               | CRP           |         |
-| Foote         | CENS          |         |
-|               | CLP           |         |
-|               | CRP           |         |
+| Algo          | Feature       | Score    |
+| ------------- |:-------------:| --------:|
+| SF            | CENS          | 0.706    |
+|               | CLP           |          |
+|               | CRP           |          |
+| Foote         | CENS          |          |
+|               | CLP           |          |
+|               | CRP           |          |
 
 ## References
 1. Serrà, J., Müller, M., Grosche, P., & Arcos, J. L. (2012). Unsupervised Detection of Music Boundaries by Time Series Structure Features. In Proc. of the 26th AAAI Conference on Artificial Intelligence (pp. 1613–1619).Toronto, Canada.  
