@@ -12,8 +12,8 @@ Related Topics: Structure Analysis, Recurrence Plot, Similarity Matrix
 Note that there are a warning in origirnal Chroma Toolbox and a little bug that can't read .mp3. I fix it!
 ## Tutorial
 There are two folders<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- segmentaion toolbox/ : set path and it can be used directly.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- workspace/ : a template for testing and evaluating a dataset 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- segmentaion toolbox/ : set path and it can be used directly   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- workspace/ : a template for testing and evaluating a dataset
 
 ### segmentaion toolbox/
 Adding this folder to toolbox or addpath, and it's easy to use.
@@ -29,7 +29,7 @@ If you want to use this template, please follows the structure of folders.
   
 root/    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- annotation/ : groundtruth or anntations files  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- audio/: audio files  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- audio/ : audio files  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- estimation/ : results of the program  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- feature/ : generated features  
   
