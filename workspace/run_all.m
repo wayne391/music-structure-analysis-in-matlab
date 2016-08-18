@@ -13,15 +13,13 @@ end
 
 %%
 for i = 1:num_audio
-    disp(i)
+    disp(i) 
     audio_filename = [path_audio, files{i},'.wav'];
-    feature_filename = [path_feature, files{i},'_clp.mat'];
+    feature_filename = [path_feature, files{i},'_cens.mat'];
     annotation_filename = [path_annotation, files{i},'.lab'];
     estimation_filename = [path_estimation, files{i},'.lab'];
-  
     result = audio_segmenter_sf(audio_filename,feature_filename); 
-%     visualize_results(audio_filename, result, annotation_filename);
+    visualize_results(audio_filename, result, annotation_filename);
     write_results(result, estimation_filename);
 end
 
-%  Visual BUG 100 
