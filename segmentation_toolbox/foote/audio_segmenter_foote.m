@@ -27,8 +27,8 @@ function seg_output = audio_segmenter_foote( filename,chroma, vis, winLenSTMSP, 
     
     variance = 0.4;
     G = gaussian_checkboard(winLen, variance);
-
     if(vis)
+        figure;
         surf(G)
     end
 %% Novelty Curve & Peak Selection
@@ -54,6 +54,7 @@ function seg_output = audio_segmenter_foote( filename,chroma, vis, winLenSTMSP, 
     end
     
     if(vis)
+        figure;
         plot(nc, 'green')
         hold on
         plot(nc_m, 'r');

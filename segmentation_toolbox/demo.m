@@ -17,7 +17,7 @@ write_results(result_sf, estimation_filename);
 addpath('./foote');
 estimation_filename = '11_-_All_You_Need_Is_Love_es_foote.lab';
 result_foote = audio_segmenter_foote(audio_filename);
-visualize_results(audio_filename, result_foote);
+visualize_results(audio_filename, result_foote, annotation_filename);
 write_results(result_foote, estimation_filename);
 
 %% Saving features to save time
