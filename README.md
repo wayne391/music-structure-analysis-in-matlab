@@ -10,7 +10,7 @@ Related Topics: Structure Analysis, Recurrence Plot (RP), Self-Similarity Matrix
 * mir_eval (python package) [5] : For evaluation (Optional)
 
 Note that there are a warning in origirnal Chroma Toolbox and a little bug that can't read .mp3. I fix it!
-## Tutorial
+## Usage
 There are two folders<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- segmentaion toolbox/ : set path and it can be used directly   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- workspace/ : a template for testing and evaluating a dataset
