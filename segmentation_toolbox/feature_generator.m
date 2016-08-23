@@ -4,7 +4,7 @@ function feature = feature_generator( filename, chroma_type, winLenSTMSP, vis)
         winLenSTMSP = 4410;
         vis = 0;
     end
-    if(nargin < 2)  chroma_type = 'cens'; end
+    if(nargin < 2)  chroma_type = 'clp'; end
     
     if(strcmp(chroma_type, 'cens'))
         [f_audio,sideinfo] = wav_to_audio('', '', filename);

@@ -1,16 +1,17 @@
-function seg_output = audio_segmenter_sf( filename,chroma,vis, winLenSTMSP, m, k ,st)
-    if(nargin < 5)
+function [seg_output, label] = audio_segmenter_sf( filename,chroma,vis, lab, winLenSTMSP, m, k ,st)
+    if(nargin < 6)
            m = 2.5;
            k = 0.04;
            st = 30;
     end
-    if(nargin < 4) winLenSTMSP = 4410; end
+    if(nargin < 5) winLenSTMSP = 4410; end
+    if(nargin < 4) lab = 0; end
     if(nargin < 3) vis = 0; end
     if(nargin < 2) chroma = 'cens'; end
     if(nargin < 1)
         error('not enough inputs');
     end
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
     disp('Feature & Pre-processing (1/4)');
     feature = feature_generator(filename, chroma, winLenSTMSP, vis);
     [a, fs] = audioread(filename);    % audio
@@ -79,33 +80,30 @@ function seg_output = audio_segmenter_sf( filename,chroma,vis, winLenSTMSP, m, k
         temp = norm(P(i+1,:) - P(i,:)) ^2;
         c = [c, temp];
     end
+    
+    % normalization
     c = (c - min(c(:)) + realmin) ./ (max(c(:))-min(c(:)));
-    w_shift = round(1+w/2);
-    c_final = [c, zeros(1, w_shift)];
-    for i = 1:length(c)
-        c_final(i+w_shift ) = c(i);
-    end
 
     if(vis)
         figure;
-        plot(c_final);
+        plot(c);
     end
 %% Select Peak
 
-    ispeak = ones(1,length(c_final));
+    ispeak = ones(1,length(c));
     pwin = round(lamda * s_frame);
-    for i = 1:length(c_final)
-        if (c_final(i) < thres)
+    for i = 1:length(c)
+        if (c(i) < thres)
             ispeak(i) = 0;
             continue;
         end
         temp = [];
         for j = -pwin:pwin
-            if((i + j) > 0 && (i+j) <= length(c_final))  
-                temp = [temp, c_final(i+j)];
+            if((i + j) > 0 && (i+j) <= length(c) && (j ~= 0))  
+                temp = [temp, c(i+j)];
             end
         end
-        if(max(temp) > c_final(i))
+        if(max(temp) > c(i))
             ispeak(i) = 0;
         end
     end
@@ -114,19 +112,32 @@ function seg_output = audio_segmenter_sf( filename,chroma,vis, winLenSTMSP, m, k
         hold on;
         plot(ispeak, 'g');
     end
-%% Output
-
-    seg_output = 0.0;
-    for i = 1:length(ispeak)
-        if(ispeak(i) ~= 0)
-            seg_output = [seg_output, i /s_frame];
-        end
-    end
-    if(seg_output(end) < (length(ispeak) /s_frame - 6))
-        seg_output = [seg_output, length(ispeak) /s_frame];
-    end
-
-    disp('done!!');
     
+%% Post-Processing & Set Boundaries
+   
+    b  = find(ispeak);
+    if(b(1) > (1 + pwin/3)) b = [1,b]; end
+    if(b(end) < (N - pwin/3 )) b = [b, N]; 
+    else
+        b(end) = N;
+    end
+
+    w_shift = ceil(1+w/2);
+    seg_output= 0.0;
+    for i = 1:length(b)
+        if(i == 1) continue; end
+        seg_output = [seg_output, (b(i) +  w_shift)/s_frame];
+    end
+
+%% Labeling
+
+    if(lab)
+        disp('labeling...')
+        label = segment_labeling( b, R, vis);
+    else
+        label = [];
+    end
+    
+    disp('done!!')
 end
 
