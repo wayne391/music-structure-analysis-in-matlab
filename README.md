@@ -1,15 +1,15 @@
-# Music Segmentation in Matlab
-Implememtation on two non-NN segmentation algorithms in matlab. Additionally, it contains a toolbox and a workspace for facilitating coding.  
-兩種不同音樂分段演算法的實作
+# Music Structure Analysis in Matlab
+Implememtation on two segmentation and one labeling algorithms in matlab. Additionally, it contains a toolbox and a workspace for facilitating coding.  
+音樂分段和標籤演算法的實作
 
-Related Topics: Structure Analysis, Recurrence Plot (RP), Self-Similarity Matrix(SSM) 
+Related Topics: Segmentation, Lableing, Recurrence Plot (RP), Self-Similarity Matrix(SSM) 
 
   
 ## Dependencies
 * Chroma Toolbox (matlab toolbox) [4] : [http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/](http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/)
 * mir_eval (python package) [5] : For evaluation (Optional)
 
-Note that there are a warning in origirnal Chroma Toolbox and a little bug that can't read .mp3. I fix it!
+Note that there are a warning in origirnal Chroma Toolbox and a little bug that it can't read .mp3. I fixed them!
 ## Usage
 There are two folders<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- segmentaion toolbox/ : set path and it can be used directly   
@@ -18,10 +18,15 @@ There are two folders<br>
 ### segmentaion_toolbox/
 Adding this folder to toolbox or addpath, and it's easy to use.
 ```matlab
+% Segmentation
 audio_filename = 'test.wav';
 result = audio_segmenter_sf(audio_filename);
 visualize_results(audio_filename, result);
+
+%Segmentation & Labeling
+[result_sf, labeling] = audio_segmenter_sf(audio_filename,'clp', 0, 1);
 ```
+
 see demo.m for further using
   
 ### workspace/  
@@ -45,8 +50,11 @@ Note that for the reason of copyright, I won't put any audio files here.
 
 ## Algorithms, Features & Performance
 ### Algorithms
-1. Structure Feature (2012) (default) [1]        
-2. Checkboard Kernel (2000) [2]    
+* Segmentation  
+&nbsp;&nbsp;&nbsp;&nbsp;1. Structure Feature (2012) (default) [1]        
+&nbsp;&nbsp;&nbsp;&nbsp;2. Checkboard Kernel (2000) [2]   
+* Labeling  
+&nbsp;&nbsp;&nbsp;&nbsp;1. Structure Feature (2014) [6]
 
 Generally, it's recommended to use the first one - "Structure Feature". It's still one of most effective segmentation algorithms. However, Checkboard Kernel is simple to implement :).  
 ### Features
@@ -56,22 +64,24 @@ To see the influence on performance of chroma feature, please refer to [3]
 Note that there are no MFCC feature, but my function accept customized feature  as input.
 I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essentia  is so hard to build. Maybe I'll add this one day.
 ### Performance
-I use "mir_eval" for evaluation. The score is F-score with 3 seconds tolerance.  
 * dataset:   
 &nbsp;&nbsp;&nbsp;&nbsp;Beatles (174 songs)  
 * parameters (default):  
 &nbsp;&nbsp;&nbsp;&nbsp;Chroma Feature: winLenSTMSP = 4410  
 &nbsp;&nbsp;&nbsp;&nbsp;Structure Feature (SF): (m, k, st) = (2.5, 0.04, 30)  
-&nbsp;&nbsp;&nbsp;&nbsp;Checkboard Kernel (foote): winLen = 64  
+&nbsp;&nbsp;&nbsp;&nbsp;Checkboard Kernel (foote): winLen = 64
+* evaluation (by mir_eval):  
+&nbsp;&nbsp;&nbsp;&nbsp;Segmentaion (Seg): F-measure with 3s tolerance  
+&nbsp;&nbsp;&nbsp;&nbsp;Labeling (Lab): Pairwise Precision  
   
-| Algo          | Feature       | Score    |
-| ------------- |:-------------:| --------:|
-| SF            | CENS          | 0.706    |
-|               | CLP           | 0.722    |
-|               | CRP           | 0.700    |
-| Foote         | CENS          | 0.448    |
-|               | CLP           | 0.440    |
-|               | CRP           | 0.423    |
+| Algo          | Feature       | Seg      | Lab     |
+| ------------- |:-------------:| --------:|--------:|
+| SF            | CENS          | 0.711    | 0.690   |
+|               | CLP           | 0.695    | 0.660   |
+|               | CRP           | 0.694    | 0.650   |
+| Foote         | CENS          | 0.448    | --      |
+|               | CLP           | 0.440    | --      |
+|               | CRP           | 0.423    | --      |
 
 I think the performance of foote is not good enough. Maybe somewhere is wrong.
 
@@ -81,3 +91,4 @@ I think the performance of foote is not good enough. Maybe somewhere is wrong.
 3. Nieto, O., Bello, J. P., Systematic Exploration Of Computational Music Structure Research. Proc. of the 17th International Society for Music Information Retrieval Conference (ISMIR). New York City, NY, USA, 2016.
 4. Meinard Müller and Sebastian Ewert Chroma Toolbox: MATLAB Implementations for Extracting Variants of Chroma-Based Audio Features Proceedings of the International Conference on Music Information Retrieval (ISMIR), 2011.
 5. Colin Raffel, Brian McFee, Eric J. Humphrey, Justin Salamon, Oriol Nieto, Dawen Liang, and Daniel P. W. Ellis, "mir_eval: A Transparent Implementation of Common MIR Metrics", Proceedings of the 15th International Conference on Music Information Retrieval, 2014.
+6. Joan Serra, Meinard M ` uller, Peter Grosche, and Josep Llu´ıs Arcos. Unsupervised Music Structure Annotation by Time Series Structure Features and Segment Similarity.
