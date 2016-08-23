@@ -76,7 +76,7 @@ I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essen
   
 | Algo          | Feature       | Seg      | Lab     |
 | ------------- |:-------------:| --------:|--------:|
-| SF            | CENS          | 0.711    | 0.690   |
+| SF            | CENS          | 0.711    | 0.692   |
 |               | CLP           | 0.695    | 0.660   |
 |               | CRP           | 0.694    | 0.650   |
 | Foote         | CENS          | 0.448    | --      |
