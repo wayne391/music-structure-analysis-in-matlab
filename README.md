@@ -23,7 +23,7 @@ audio_filename = 'test.wav';
 result = audio_segmenter_sf(audio_filename);
 visualize_results(audio_filename, result);
 
-%Segmentation & Labeling
+% Segmentation & Labeling
 [result_sf, labeling] = audio_segmenter_sf(audio_filename,'clp', 0, 1);
 ```
 
