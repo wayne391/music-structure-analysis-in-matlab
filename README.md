@@ -8,6 +8,7 @@ Related Topics: Segmentation, Lableing, Recurrence Plot (RP), Self-Similarity Ma
 ## Dependencies
 * Chroma Toolbox (matlab toolbox) [4] : [http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/](http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/)
 * mir_eval (python package) [5] : For evaluation (Optional)
+* madmom [7] : For HPCP, DCP chroma feature (Optional)
 
 Note that there are a warning in origirnal Chroma Toolbox and a little bug that it can't read .mp3. I fixed them!
 ## Usage
@@ -43,6 +44,7 @@ In the root folder (workspace here), there are three programs. Following the pro
 1. run "feature_saving.m" and generated features  will be placed at the feature folder  
 2. run "run_all.m" and the results of prediction will be palced at estimation folder  
 3. run "eval.py" to see the performance. (Optional)
+4. if needed, run "hpcp_dcp.py" to gain hpcp and dcp chorma feature
 
 Note that the amount of annotation files will dominate the amount of evaluation. To see details in "run_all.m" and "eval.py".
 Note that there are existing results in estimation folder, the parameter is default (see below).   
@@ -59,10 +61,10 @@ Note that for the reason of copyright, I won't put any audio files here.
 Generally, it's recommended to use the first one - "Structure Feature". It's still one of most effective segmentation algorithms. However, Checkboard Kernel is simple to implement :).  
 ### Features
 From Chroma Toolbox: CLP (default), CENS, CRP
+From Madmom: HPCP, DCP
 
 To see the influence on performance of chroma feature, please refer to [3] 
 Note that there are no MFCC feature, but my function accept customized feature  as input.
-I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essentia  is so hard to build. Maybe I'll add this one day.
 ### Performance
 * dataset:   
 &nbsp;&nbsp;&nbsp;&nbsp;Beatles (174 songs)  
@@ -79,6 +81,8 @@ I can't find good Harmonic Pitch Class profiles (HPCP) codes in matlab and essen
 | SF            | CENS          | 0.711    | 0.692   |
 |               | CLP           | 0.695    | 0.660   |
 |               | CRP           | 0.694    | 0.650   |
+|               | HPCP          | 0.630    | 0.600   |
+|               | HPCP          | 0.689    | 0.645   |
 | Foote         | CENS          | 0.448    | --      |
 |               | CLP           | 0.440    | --      |
 |               | CRP           | 0.423    | --      |
@@ -92,3 +96,4 @@ I think the performance of foote is not good enough. Maybe somewhere is wrong.
 4. Meinard Müller and Sebastian Ewert Chroma Toolbox: MATLAB Implementations for Extracting Variants of Chroma-Based Audio Features Proceedings of the International Conference on Music Information Retrieval (ISMIR), 2011.
 5. Colin Raffel, Brian McFee, Eric J. Humphrey, Justin Salamon, Oriol Nieto, Dawen Liang, and Daniel P. W. Ellis, "mir_eval: A Transparent Implementation of Common MIR Metrics", Proceedings of the 15th International Conference on Music Information Retrieval, 2014.
 6. Joan Serra, Meinard M ` uller, Peter Grosche, and Josep Llu´ıs Arcos. Unsupervised Music Structure Annotation by Time Series Structure Features and Segment Similarity.
+7. [http://resources.mpi-inf.mpg.de/MIR/chromatoolbox/] (https://github.com/CPJKU/madmom)
