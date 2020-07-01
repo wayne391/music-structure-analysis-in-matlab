@@ -2,6 +2,8 @@
 Implememtation on two segmentation and one labeling algorithms in matlab. Additionally, it contains a toolbox and a workspace for facilitating coding.  
 音樂分段和標籤演算法的實作
 
+**NEW** pyhton implementation is [here](https://github.com/wayne391/sf_segmenter).
+
 Related Topics: Segmentation, Lableing, Recurrence Plot (RP), Self-Similarity Matrix(SSM) 
 
   
